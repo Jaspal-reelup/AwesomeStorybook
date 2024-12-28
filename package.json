@@ -13,7 +13,8 @@
     "storybook-generate": "sb-rn-get-stories --config-path .ondevice",
     "storybook": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --ios",
-    "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android"
+    "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android",
+    "chromatic": "npx chromatic --project-token=chpt_ce5665c4bdbfe95"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.0.6",
@@ -56,6 +57,7 @@
     "babel-loader": "^8.2.3",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-plugin-react-native-web": "^0.19.10",
+    "chromatic": "^11.20.2",
     "cross-env": "^7.0.3",
     "storybook": "^8.4.7",
     "typescript": "~5.3.3"
