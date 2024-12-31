@@ -1,7 +1,6 @@
 {
-  "name": "awesomestorybook",
-  "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "jas-awesomestorybook",
+  "version": "1.0.5",
   "license": "MIT",
   "scripts": {
     "start": "expo start",
@@ -14,23 +13,27 @@
     "storybook": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --ios",
     "storybook:android": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start --android",
-    "chromatic": "npx chromatic --project-token=chpt_ce5665c4bdbfe95"
+    "chromatic": "npx chromatic --project-token=chpt_ce5665c4bdbfe95",
+    "prepare": "bob build"
+  },
+  "peerDependencies": {
+    "expo": "^49.0.0",
+    "react": "^18.0.0",
+    "react-native": "^0.72.0",
+    "react-native-gesture-handler": "^2.20.0",
+    "react-native-reanimated": "^3.16.0",
+    "react-native-safe-area-context": "^4.5.0",
+    "react-native-svg": "^12.3.0"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.0.6",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-community/datetimepicker": "8.2.0",
     "@react-native-community/slider": "4.5.5",
-    "expo": "~52.0.17",
+    "expo": "^52.0.23",
     "expo-constants": "~17.0.3",
     "expo-status-bar": "~2.0.0",
-    "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-native": "0.76.3",
-    "react-native-gesture-handler": "~2.20.2",
-    "react-native-reanimated": "~3.16.1",
-    "react-native-safe-area-context": "4.12.0",
-    "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.13"
   },
   "devDependencies": {
@@ -59,6 +62,12 @@
     "babel-plugin-react-native-web": "^0.19.10",
     "chromatic": "^11.20.2",
     "cross-env": "^7.0.3",
+    "react-native": "^0.76.5",
+    "react-native-builder-bob": "^0.35.2",
+    "react-native-gesture-handler": "^2.21.2",
+    "react-native-reanimated": "^3.16.6",
+    "react-native-safe-area-context": "^5.0.0",
+    "react-native-svg": "^15.10.1",
     "storybook": "^8.4.7",
     "typescript": "~5.3.3"
   },
@@ -73,5 +82,55 @@
       "react-docgen-typescript": "2.2.2"
     }
   },
-  "private": true
+  "source": "./components/index.js",
+  "main": "./lib/commonjs/index.js",
+  "module": "./lib/module/index.js",
+  "types": "./lib/typescript/commonjs/components/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/typescript/module/components/index.d.ts",
+        "default": "./lib/module/index.js"
+      },
+      "require": {
+        "types": "./lib/typescript/commonjs/components/index.d.ts",
+        "default": "./lib/commonjs/index.js"
+      }
+    }
+  },
+  "files": [
+    "components",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "react-native-builder-bob": {
+    "source": "components",
+    "output": "lib",
+    "targets": [
+      [
+        "commonjs",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "esm": true
+        }
+      ]
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }

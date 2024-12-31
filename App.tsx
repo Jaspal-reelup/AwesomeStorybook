@@ -1,9 +1,22 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { useState } from "react";
+import { MyInput } from "./components";
+
+
 function App() {
+
+  const [text, setText] = useState("");
+
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
+      <MyInput
+        text={text}
+        setText={setText}
+        placeholder="Enter your text"
+        customStyle={{ backgroundColor: "white" }}
+      />
     </View>
   );
 }

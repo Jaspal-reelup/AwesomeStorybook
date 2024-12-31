@@ -1,16 +1,17 @@
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-interface MyButtonProps {
+export interface MyButtonProps {
   onPress: () => void;
   text: string;
+  customStyle?:object;
+
 }
 
-export const MyButton = ({ onPress, text }: MyButtonProps) => {
+export const MyButton = ({ onPress, text ,customStyle}: MyButtonProps) => {
   return (
     <>
-    <Text >{text}:</Text>
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={[styles.container,customStyle]} onPress={onPress}>
       <Text style={styles.text}>{text}</Text>
     </TouchableOpacity>
     </>
